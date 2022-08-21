@@ -48,7 +48,8 @@ public class Usuario {
                 "id: " + id +
                 ", nome: " + nome +
                 ", email: " + email +
-                ", cpf: " + cpf +
+                ", cpf" +
+                ": " + cpf +
                 '}';
     }
 }
