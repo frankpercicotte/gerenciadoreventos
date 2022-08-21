@@ -1,6 +1,7 @@
 package br.com.fpercicotte.Model;
 
 public class Usuario {
+    private int id;
     private String nome;
     private String email;
     private String cpf;
@@ -9,6 +10,12 @@ public class Usuario {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int index) {
+        this.id = index;
     }
 
     public String getNome() {
@@ -37,10 +44,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
+        return "Usuario {" +
+                "id: " + id +
+                ", nome: " + nome +
+                ", email: " + email +
+                ", cpf: " + cpf +
                 '}';
     }
 }

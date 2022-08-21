@@ -13,15 +13,17 @@ public class MenuPrincipal {
 
     String[] opcaosPrincipal = {
             "Escolha uma opção:",
-            "[1] - Cadastrar Usuário",
-            "[2] - Cadastrar Evento",
-            "[3] - Listar Evento Abertos",
-            "[4] - Listar Evento Inscritos",
-            "[5] - Listar Evento Próximos",
+            "[1] - Cadastrar Usuários",
+            "[2] - Cadastrar Eventos",
+            "[3] - Listar Usuários",
+            "[4] - Listar Eventos Abertos",
+            "[5] - Listar Eventos Inscritos",
+            "[6] - Listar Eventos Próximos",
             "[9] - Sair\n"
     };
 
     Scanner teclado = new Scanner(System.in);
+    MenuUsuario menuUsuario = new MenuUsuario();
 
      public void menuPrincipal(){
 
@@ -34,16 +36,17 @@ public class MenuPrincipal {
 
              switch (opcao) {
                  case "1":
-                     this.menuCadastrarUsuario();
+                     menuUsuario.menuCadastrarUsuario();
                      break;
                  case "2":
                      this.menuCadastrarEvento();
                      break;
                  case "3":
-                     // System.out.println("Função ainda não implementada.");
+                     menuUsuario.listarUsuarios();
+                     break;
                  case "4":
-                     // System.out.println("Função ainda não implementada.");
                  case "5":
+                 case "6":
                      System.out.println("Função ainda não implementada.");
                      break;
                  case "9":
@@ -65,26 +68,6 @@ public class MenuPrincipal {
     public void voltarMenuPrincipal(){
         System.out.println("[ENTER] para voltar.");
         teclado.nextLine();
-    }
-    public void menuCadastrarUsuario(){
-        Usuario novoUs;
-        System.out.println("---------------------------------");
-        System.out.println("Cadastro de Usuário");
-        System.out.println("---------------------------------");
-
-        System.out.print("Nome: ");
-        String nome = teclado.nextLine();
-        System.out.print("Email: ");
-        String email = teclado.nextLine();
-        System.out.print("cpf: ");
-        String cpf = teclado.nextLine();
-        novoUs = new Usuario(nome,email,cpf);
-
-        System.out.println("---------------------------------");
-        System.out.println(novoUs.toString());
-        System.out.println("---------------------------------");
-
-        this.voltarMenuPrincipal();
     }
 
     public void menuCadastrarEvento(){
