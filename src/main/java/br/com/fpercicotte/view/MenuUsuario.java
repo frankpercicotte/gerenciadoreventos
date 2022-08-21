@@ -32,7 +32,7 @@ public class MenuUsuario {
                     this.listarUsuarios();
                     break;
                 case "3":
-                    System.out.println("Função ainda não implementada.");
+                    deletarUsuario();
                     break;
                 case "V":
                     flag = false;
@@ -72,4 +72,17 @@ public class MenuUsuario {
         System.out.println("---------------------------------");
     }
 
+    public void deletarUsuario() {
+        ManipularUsuario manipular = new ManipularUsuario();
+        manipular.listarUsurarios();
+        System.out.println("Selecione o ID do usúario que deseja deltar:");
+        String id = teclado.nextLine();
+        boolean res = manipular.deletarUsuario(Integer.parseInt(id));
+
+        if (res) {
+            System.out.println(" *** [OK] Usuário deletado! ***\n");
+        } else {
+            System.out.println(" *** [ERRO] - Usuário não localizado! ***\n");
+        }
+    }
 }

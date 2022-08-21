@@ -13,13 +13,19 @@ public class ManipularUsuario {
 
     public Usuario salvarUsuario(Usuario usuario){
         index = arrayUsuarios.size();
-        usuario.setId(index);
+        usuario.setId(index+1);
         this.arrayUsuarios.add(usuario);
-        return arrayUsuarios.get(index);
+        return arrayUsuarios.get(index--);
     }
 
-    public boolean deletarUsuario(Usuario usuario){
-        if (arrayUsuarios.contains(usuario)){
+    public boolean deletarUsuario(int id){
+        Usuario usuario = null;
+        for (Usuario usr: arrayUsuarios) {
+           if(usr.getId() == id){
+               usuario = usr;
+           }
+        }
+        if (usuario != null){
             arrayUsuarios.remove(usuario);
             return true;
         }
