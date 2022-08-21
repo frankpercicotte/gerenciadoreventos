@@ -2,16 +2,49 @@ package br.com.fpercicotte.view;
 
 import br.com.fpercicotte.Model.Usuario;
 import br.com.fpercicotte.service.ManipularUsuario;
+import br.com.fpercicotte.util.Util;
 
 import java.util.Scanner;
 
 public class MenuUsuario {
 
     Scanner teclado = new Scanner(System.in);
-    ManipularUsuario manipular = new ManipularUsuario();
+    String[] opcoesUsuario = {
+            "Escolha uma opção:",
+            "[1] - Cadastrar Usuários",
+            "[2] - Listar Usuários",
+            "[3] - Deletar Usuário",
+            "[V] - Voltar Menu Principal\n"
+    };
+
+    public void menuUsuario(){
+        boolean flag = true;
+        while (flag){
+
+            Util.montarMenu("Menu Usuário",opcoesUsuario);
+            String opcao = teclado.nextLine();
+
+            switch (opcao.toUpperCase()) {
+                case "1":
+                    this.menuCadastrarUsuario();
+                    break;
+                case "2":
+                    this.listarUsuarios();
+                    break;
+                case "3":
+                    System.out.println("Função ainda não implementada.");
+                    break;
+                case "V":
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("Opção Inválida!");
+            }
+        }
+    }
     public void menuCadastrarUsuario(){
        Usuario novoUsuario;
-        ManipularUsuario manipularUsuario = new ManipularUsuario();
+        ManipularUsuario manipular = new ManipularUsuario();
         System.out.println("---------------------------------");
         System.out.println("Cadastro de Usuário");
         System.out.println("---------------------------------");
@@ -34,7 +67,7 @@ public class MenuUsuario {
         ManipularUsuario manipular = new ManipularUsuario();
         System.out.println("---------------------------------");
         System.out.println("Listar Usuários");
-        System.out.println("---------------------------------");
+
         manipular.listarUsurarios();
         System.out.println("---------------------------------");
     }

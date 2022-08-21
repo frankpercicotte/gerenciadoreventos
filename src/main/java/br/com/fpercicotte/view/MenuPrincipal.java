@@ -3,6 +3,7 @@ package br.com.fpercicotte.view;
 import br.com.fpercicotte.Model.Categoria;
 import br.com.fpercicotte.Model.Evento;
 import br.com.fpercicotte.Model.Usuario;
+import br.com.fpercicotte.util.Util;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
 
-    String[] opcaosPrincipal = {
+    String[] opcoesMenu = {
             "Escolha uma opção:",
             "[1] - Cadastrar Usuários",
             "[2] - Cadastrar Eventos",
@@ -19,7 +20,7 @@ public class MenuPrincipal {
             "[4] - Listar Eventos Abertos",
             "[5] - Listar Eventos Inscritos",
             "[6] - Listar Eventos Próximos",
-            "[9] - Sair\n"
+            "[S] - Sair\n"
     };
 
     Scanner teclado = new Scanner(System.in);
@@ -30,13 +31,13 @@ public class MenuPrincipal {
          boolean flag = true;
 
          while (flag){
-             this.montaMenu();
+             Util.montarMenu("Menu Principal", opcoesMenu);
              System.out.print("Opção: ");
              String opcao = teclado.nextLine();
 
-             switch (opcao) {
+             switch (opcao.toUpperCase()) {
                  case "1":
-                     menuUsuario.menuCadastrarUsuario();
+                     menuUsuario.menuUsuario();
                      break;
                  case "2":
                      this.menuCadastrarEvento();
@@ -49,7 +50,7 @@ public class MenuPrincipal {
                  case "6":
                      System.out.println("Função ainda não implementada.");
                      break;
-                 case "9":
+                 case "S":
                      flag = false;
                      break;
                  default:
@@ -58,11 +59,6 @@ public class MenuPrincipal {
          }
          teclado.close();
 
-    }
-    private void montaMenu(){
-        for (String opcao : opcaosPrincipal) {
-            System.out.println(opcao);
-        }
     }
 
     public void voltarMenuPrincipal(){
