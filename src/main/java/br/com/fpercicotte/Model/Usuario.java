@@ -14,6 +14,7 @@ public class Usuario {
     public int getId() {
         return id;
     }
+
     public void setId(int index) {
         this.id = index;
     }

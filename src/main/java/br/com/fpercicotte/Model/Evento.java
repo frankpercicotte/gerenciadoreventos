@@ -3,6 +3,7 @@ package br.com.fpercicotte.Model;
 import java.util.Arrays;
 
 public class Evento {
+    private int id;
     private String data;
     private String nome;
     private String endereco;
@@ -18,6 +19,9 @@ public class Evento {
         this.descricao = descricao;
     }
 
+    public int getId() { return this.id; }
+
+    public void setId(int id) {this.id = id; }
     public String getData() {
         return data;
     }
@@ -70,12 +74,13 @@ public class Evento {
     public String toString() {
 
         return "Evento{" +
-                "data=" + data +
-                ", nome='" + nome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", inscritos=" + Arrays.toString(inscritos) +
-                "}";
+                "id: " + id +
+                ", data: " + data +
+                ", nome: " + nome  +
+                ", endereco: " + endereco  +
+                ", categoria: " + categoria  +
+                ", descricao: " + descricao  +
+                ", inscritos: [" + Arrays.toString(inscritos) +
+                "] }";
     }
 }

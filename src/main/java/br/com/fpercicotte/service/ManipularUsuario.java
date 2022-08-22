@@ -10,7 +10,6 @@ public class ManipularUsuario {
 
     final static List<Usuario> arrayUsuarios = new ArrayList<>();
     private int index;
-
     public Usuario salvarUsuario(Usuario usuario){
         index = arrayUsuarios.size();
         usuario.setId(index+1);
