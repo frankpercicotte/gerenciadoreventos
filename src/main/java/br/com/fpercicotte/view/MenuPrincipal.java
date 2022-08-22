@@ -14,17 +14,14 @@ public class MenuPrincipal {
 
     String[] opcoesMenu = {
             "Escolha uma opção:",
-            "[1] - Cadastrar Usuários",
-            "[2] - Cadastrar Eventos",
-            "[3] - Listar Usuários",
-            "[4] - Listar Eventos Abertos",
-            "[5] - Listar Eventos Inscritos",
-            "[6] - Listar Eventos Próximos",
+            "[1] - Menu Usuários",
+            "[2] - Menu Eventos",
             "[S] - Sair\n"
     };
 
     Scanner teclado = new Scanner(System.in);
     MenuUsuario menuUsuario = new MenuUsuario();
+    MenuEvento menuEvento = new MenuEvento();
 
      public void menuPrincipal(){
 
@@ -40,15 +37,7 @@ public class MenuPrincipal {
                      menuUsuario.menuUsuario();
                      break;
                  case "2":
-                     this.menuCadastrarEvento();
-                     break;
-                 case "3":
-                     menuUsuario.listarUsuarios();
-                     break;
-                 case "4":
-                 case "5":
-                 case "6":
-                     System.out.println("Função ainda não implementada.");
+                     menuEvento.menuEvento();
                      break;
                  case "S":
                      flag = false;
@@ -66,42 +55,5 @@ public class MenuPrincipal {
         teclado.nextLine();
     }
 
-    public void menuCadastrarEvento(){
-        Evento novoEvento;
-        System.out.println("---------------------------------");
-        System.out.println("Cadastro de Evento");
-        System.out.println("---------------------------------");
-        System.out.print("Data (dd-mm-yy): ");
-        String data = teclado.nextLine();
 
-        System.out.print("Horário (hh:mm [h: 0-23 / mm: 0:59]): ");
-        String horario = teclado.nextLine();
-
-        System.out.print("Nome: ");
-        String nome = teclado.nextLine();;
-
-        System.out.print("Endereço: ");
-        String endereco = teclado.nextLine();
-
-        String categorias = "";
-        for(Categoria c : Categoria.values()) {
-            categorias += c.toString() + " ";
-        }
-        System.out.print("Categoria: [" + categorias + "] ");
-        String categoria = teclado.nextLine();
-
-        System.out.print("Descricao: ");
-        String descricao = teclado.nextLine();
-
-        LocalDateTime dataHorario = LocalDateTime.now();
-        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yy 'as' HH:mm");
-
-        novoEvento = new Evento(dataHorario.format(formatoData).toString(),nome,endereco,categoria,descricao);
-
-        System.out.println("---------------------------------");
-        System.out.println(novoEvento.toString());
-        System.out.println("---------------------------------");
-
-        this.voltarMenuPrincipal();
-    }
 }
