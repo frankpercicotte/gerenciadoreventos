@@ -1,17 +1,20 @@
 package br.com.fpercicotte.Model;
 
+import br.com.fpercicotte.util.Util;
+
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class Evento {
     private int id;
-    private String data;
+    private LocalDateTime data;
     private String nome;
     private String endereco;
     private String categoria;
     private String descricao;
     private String[] inscritos;
 
-    public Evento(String data, String nome, String endereco, String categoria, String descricao) {
+    public Evento(LocalDateTime data, String nome, String endereco, String categoria, String descricao) {
         this.data = data;
         this.nome = nome;
         this.endereco = endereco;
@@ -22,11 +25,11 @@ public class Evento {
     public int getId() { return this.id; }
 
     public void setId(int id) {this.id = id; }
-    public String getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 
@@ -72,15 +75,13 @@ public class Evento {
 
     @Override
     public String toString() {
-
         return "Evento{" +
                 "id: " + id +
-                ", data: " + data +
+                ", data: " + Util.dataParaString(data) +
                 ", nome: " + nome  +
                 ", endereco: " + endereco  +
                 ", categoria: " + categoria  +
-                ", descricao: " + descricao  +
-                ", inscritos: [" + Arrays.toString(inscritos) +
+                ", descricao: " + descricao +
                 "] }";
     }
 }
