@@ -3,7 +3,8 @@ package br.com.fpercicotte.view;
 import br.com.fpercicotte.Model.Categoria;
 import br.com.fpercicotte.Model.Evento;
 import br.com.fpercicotte.service.ManipularEvento;
-import br.com.fpercicotte.util.Util;
+import br.com.fpercicotte.util.ManipularData;
+import br.com.fpercicotte.util.Menu;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +28,7 @@ public class MenuEvento {
         boolean flag = true;
         while (flag){
 
-            Util.montarMenu("Menu Evento", opcoesEvento);
+            Menu.montarMenu("Menu Evento", opcoesEvento);
             String opcao = teclado.nextLine();
 
             switch (opcao.toUpperCase()) {
@@ -83,7 +84,7 @@ public class MenuEvento {
         System.out.print("Descricao: ");
         String descricao = teclado.nextLine();
 
-        LocalDateTime dataHorario = Util.stringParaData(data, hora);
+        LocalDateTime dataHorario = ManipularData.stringParaData(data, hora);
         if (dataHorario == null){
             System.out.println("Erro na formatação da data");
             System.out.println("Digitado: " + data + " " + hora );

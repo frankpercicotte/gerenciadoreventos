@@ -2,7 +2,9 @@ package br.com.fpercicotte.view;
 
 import br.com.fpercicotte.Model.Usuario;
 import br.com.fpercicotte.service.ManipularUsuario;
-import br.com.fpercicotte.util.Util;
+import br.com.fpercicotte.util.Menu;
+import br.com.fpercicotte.util.ValidaCPF;
+import br.com.fpercicotte.util.ValidaEmail;
 
 import java.util.Scanner;
 
@@ -21,7 +23,7 @@ public class MenuUsuario {
         boolean flag = true;
         while (flag){
 
-            Util.montarMenu("Menu Usuário",opcoesUsuario);
+            Menu.montarMenu("Menu Usuário",opcoesUsuario);
             String opcao = teclado.nextLine();
 
             switch (opcao.toUpperCase()) {
@@ -53,14 +55,21 @@ public class MenuUsuario {
         String nome = teclado.nextLine();
         System.out.print("Email: ");
         String email = teclado.nextLine();
+
         System.out.print("cpf: ");
         String cpf = teclado.nextLine();
-        novoUsuario = new Usuario(nome,email,cpf);
+        //Tirar pontuação caso tenha sido digitado.
+        cpf = cpf.replaceAll("\\p{Punct}", "");
 
-
-        System.out.println("---------------------------------");
-        System.out.println(manipular.salvarUsuario(novoUsuario).toString());
-        System.out.println("---------------------------------");
+        if (ValidaEmail.isEmail(email) & ValidaCPF.isCPF(cpf)) {
+            novoUsuario = new Usuario(nome, email, cpf);
+            System.out.println("---------------------------------");
+            System.out.println(manipular.salvarUsuario(novoUsuario).toString());
+            System.out.println("---------------------------------");
+        } else{
+            System.out.println("[Erro] Cadastrar usuário, email ou cpf está inválido!");
+            System.out.println();
+        }
     }
 
     public void listarUsuarios(){

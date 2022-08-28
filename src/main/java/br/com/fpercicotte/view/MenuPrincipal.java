@@ -1,12 +1,7 @@
 package br.com.fpercicotte.view;
 
-import br.com.fpercicotte.Model.Categoria;
-import br.com.fpercicotte.Model.Evento;
-import br.com.fpercicotte.Model.Usuario;
-import br.com.fpercicotte.util.Util;
+import br.com.fpercicotte.util.Menu;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
@@ -28,7 +23,7 @@ public class MenuPrincipal {
          boolean flag = true;
 
          while (flag){
-             Util.montarMenu("Menu Principal", opcoesMenu);
+             Menu.montarMenu("Menu Principal", opcoesMenu);
              System.out.print("Opção: ");
              String opcao = teclado.nextLine();
 

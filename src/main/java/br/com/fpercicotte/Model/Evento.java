@@ -1,9 +1,8 @@
 package br.com.fpercicotte.Model;
 
-import br.com.fpercicotte.util.Util;
+import br.com.fpercicotte.util.ManipularData;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 public class Evento {
     private int id;
@@ -77,7 +76,7 @@ public class Evento {
     public String toString() {
         return "Evento{" +
                 "id: " + id +
-                ", data: " + Util.dataParaString(data) +
+                ", data: " + ManipularData.dataParaString(data) +
                 ", nome: " + nome  +
                 ", endereco: " + endereco  +
                 ", categoria: " + categoria  +
