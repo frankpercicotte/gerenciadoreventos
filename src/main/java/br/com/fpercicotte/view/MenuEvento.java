@@ -61,11 +61,11 @@ public class MenuEvento {
         System.out.println("---------------------------------");
         System.out.println("Cadastro de Evento");
         System.out.println("---------------------------------");
-        System.out.print("Data (dd-mm-yy): ");
+        System.out.print("Data (dd/mm/yyyy): ");
         String data = teclado.nextLine();
 
-        System.out.print("Horário (hh:mm [h: 0-23 / mm: 0:59]): ");
-        String horario = teclado.nextLine();
+        System.out.print("Hora (hh:mm [h: 0-23 / mm: 0:59]): ");
+        String hora = teclado.nextLine();
 
         System.out.print("Nome: ");
         String nome = teclado.nextLine();;
@@ -83,10 +83,16 @@ public class MenuEvento {
         System.out.print("Descricao: ");
         String descricao = teclado.nextLine();
 
-        LocalDateTime dataHorario = LocalDateTime.now();
+        LocalDateTime dataHorario = Util.stringParaData(data, hora);
+        if (dataHorario == null){
+            System.out.println("Erro na formatação da data");
+            System.out.println("Digitado: " + data + " " + hora );
+            System.out.println("Exemplo de formato correto: 22/08/2022 18:30:00" );
+            return;
+        }
         DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yy 'as' HH:mm");
 
-        novoEvento = new Evento(dataHorario.format(formatoData).toString(),nome,endereco,categoria,descricao);
+        novoEvento = new Evento(dataHorario,nome,endereco,categoria,descricao);
 
         System.out.println("---------------------------------");
         System.out.println(manipular.salvarEvento(novoEvento).toString());
