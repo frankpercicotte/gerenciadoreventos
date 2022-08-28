@@ -2,8 +2,10 @@ package br.com.fpercicotte.service;
 
 import br.com.fpercicotte.Model.Evento;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ManipularEvento {
 
@@ -34,9 +36,21 @@ public class ManipularEvento {
         return this.index;
     }
 
-    public void listarEventos(){
+    public void listarEventosAbertos(){
         for (Evento evt : arrayEventos) {
+            if (LocalDateTime.now().isBefore(evt.getData()))
             System.out.println(evt.toString());
         }
     }
+    public void listarEventosRealizados(){
+        for (Evento evt : arrayEventos) {
+            if (LocalDateTime.now().isAfter(evt.getData()))
+                System.out.println(evt.toString());
+        }
+    }
+
+    public void listarInscritos(){
+        System.out.println("Em implementação.");
+    }
+
 }

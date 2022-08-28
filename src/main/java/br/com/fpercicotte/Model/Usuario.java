@@ -2,11 +2,16 @@ package br.com.fpercicotte.Model;
 
 import br.com.fpercicotte.util.ValidaCPF;
 
+import java.util.List;
+
 public class Usuario {
     private int id;
     private String nome;
     private String email;
     private String cpf;
+
+    private List<Evento> eventoList;
+
 
     public Usuario(String nome, String email, String cpf) {
         this.nome = nome;
@@ -43,6 +48,12 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public List<Evento> getEventoList() { return eventoList;}
+
+    public void setEventoList(List<Evento> eventoList) {
+        this.eventoList = eventoList;
     }
 
     @Override

@@ -7,7 +7,6 @@ import br.com.fpercicotte.util.ManipularData;
 import br.com.fpercicotte.util.Menu;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class MenuEvento {
@@ -16,11 +15,12 @@ public class MenuEvento {
     String[] opcoesEvento = {
             "Escolha uma opção:",
             "[1] - Cadastrar Eventos",
-            "[2] - Listar Todos Eventos",
-            "[3] - Deletar Evento",
-            "[4] - Listar Eventos Abertos",
-            "[5] - Listar Eventos Inscritos",
-            "[6] - Listar Eventos Próximos",
+            "[2] - Listar Eventos Abertos",
+            "[3] - Listar Eventos Inscritos",
+            "[4] - Listar Eventos Realizados",
+            "[5] - Inscrever-se em Evento",
+            "[6] - Cancelar Inscrição em Evento",
+            "[7] - Deletar Evento",
             "[V] - Voltar Menu Principal\n"
     };
 
@@ -36,15 +36,20 @@ public class MenuEvento {
                     this.menuCadastrarEvento();
                     break;
                 case "2":
-                    this.listarEventos();
+                    this.menuEventosAbertos();
                     break;
                 case "3":
-                    this.deletarEvento();
+                    this.menuEventosInscrito();
                     break;
                 case "4":
+                    this.menuEventosRealizados();
+                    break;
                 case "5":
                 case "6":
                     System.out.println("Ainda não implentado");
+                    break;
+                case "7":
+                    this.menuDeletarEvento();
                     break;
                 case "V":
                     flag = false;
@@ -69,14 +74,14 @@ public class MenuEvento {
         String hora = teclado.nextLine();
 
         System.out.print("Nome: ");
-        String nome = teclado.nextLine();;
+        String nome = teclado.nextLine();
 
         System.out.print("Endereço: ");
         String endereco = teclado.nextLine();
 
-        String categorias = "";
+        StringBuilder categorias = new StringBuilder();
         for(Categoria c : Categoria.values()) {
-            categorias += c.toString() + " ";
+            categorias.append(c.toString()).append(" ");
         }
         System.out.print("Categoria: [" + categorias + "] ");
         String categoria = teclado.nextLine();
@@ -91,7 +96,6 @@ public class MenuEvento {
             System.out.println("Exemplo de formato correto: 22/08/2022 18:30:00" );
             return;
         }
-        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yy 'as' HH:mm");
 
         novoEvento = new Evento(dataHorario,nome,endereco,categoria,descricao);
 
@@ -100,18 +104,35 @@ public class MenuEvento {
         System.out.println("---------------------------------");
     }
 
-    public void listarEventos(){
+    public void menuEventosAbertos(){
         ManipularEvento manipular = new ManipularEvento();
         System.out.println("---------------------------------");
         System.out.println("Listar Eventos");
 
-        manipular.listarEventos();
+        manipular.listarEventosAbertos();
         System.out.println("---------------------------------");
      }
 
-    public void deletarEvento(){
+    public void menuEventosRealizados(){
         ManipularEvento manipular = new ManipularEvento();
-        manipular.listarEventos();
+        System.out.println("---------------------------------");
+        System.out.println("Listar Eventos já realizados");
+
+        manipular.listarEventosRealizados();
+        System.out.println("---------------------------------");
+    }
+
+    public void menuEventosInscrito(){
+        ManipularEvento manipular = new ManipularEvento();
+        System.out.println("---------------------------------");
+        System.out.println("Listar Eventos Inscrito");
+
+        manipular.listarInscritos();
+        System.out.println("---------------------------------");
+    }
+    public void menuDeletarEvento(){
+        ManipularEvento manipular = new ManipularEvento();
+        manipular.listarEventosAbertos();
         System.out.println("Selecione o ID do evento que deseja deltar:");
         String id = teclado.nextLine();
 
@@ -121,8 +142,6 @@ public class MenuEvento {
         } else {
             System.out.println(" *** [ERRO] - Evento não localizado! ***\n");
         }
-
-
     }
 
 }

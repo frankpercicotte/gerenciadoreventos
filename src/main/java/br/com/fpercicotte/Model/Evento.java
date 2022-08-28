@@ -11,7 +11,7 @@ public class Evento {
     private String endereco;
     private String categoria;
     private String descricao;
-    private String[] inscritos;
+
 
     public Evento(LocalDateTime data, String nome, String endereco, String categoria, String descricao) {
         this.data = data;
@@ -64,13 +64,6 @@ public class Evento {
         this.descricao = descricao;
     }
 
-    public String[] getInscritos() {
-        return inscritos;
-    }
-
-    public void setInscritos(String[] inscritos) {
-        this.inscritos = inscritos;
-    }
 
     @Override
     public String toString() {
