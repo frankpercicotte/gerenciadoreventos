@@ -3,10 +3,12 @@ package br.com.fpercicotte.view;
 import br.com.fpercicotte.Model.Categoria;
 import br.com.fpercicotte.Model.Evento;
 import br.com.fpercicotte.service.ManipularEvento;
+import br.com.fpercicotte.service.ManipularUsuario;
 import br.com.fpercicotte.util.ManipularData;
 import br.com.fpercicotte.util.Menu;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuEvento {
@@ -45,6 +47,8 @@ public class MenuEvento {
                     this.menuEventosRealizados();
                     break;
                 case "5":
+                    this.menuInscrever();
+                    break;
                 case "6":
                     System.out.println("Ainda não implentado");
                     break;
@@ -104,14 +108,33 @@ public class MenuEvento {
         System.out.println("---------------------------------");
     }
 
-    public void menuEventosAbertos(){
+    //precisa refatorar, alta dependecia.
+    public void menuInscrever(){
+        ManipularUsuario usuario = new ManipularUsuario();
+        ManipularEvento evento = new ManipularEvento();
+
+        //Verifica se existe usuário ou evento em aberto
+        int indexUsuario = usuario.getIndex();
+        List<Evento> eventosAbertos = evento.listarEventosAbertos();
+
+        if (indexUsuario < 0 || eventosAbertos.isEmpty()) {
+            String resp = indexUsuario < 0 ? "Sem Usuário cadastrado!" : "Sem eventos abertos!";
+            System.out.println("[Erro] " + resp);
+        };
+
+        //escolher um usuario
+        // escolher um evento
+
+    }
+    public List<Evento> menuEventosAbertos(){
         ManipularEvento manipular = new ManipularEvento();
         System.out.println("---------------------------------");
         System.out.println("Listar Eventos");
 
         manipular.listarEventosAbertos();
         System.out.println("---------------------------------");
-     }
+        return null;
+    }
 
     public void menuEventosRealizados(){
         ManipularEvento manipular = new ManipularEvento();

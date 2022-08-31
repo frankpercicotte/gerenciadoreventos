@@ -33,15 +33,19 @@ public class ManipularEvento {
     }
 
     public int getIndex(){
-        return this.index;
+        return arrayEventos.size() -1;
     }
 
-    public void listarEventosAbertos(){
+    public List<Evento> listarEventosAbertos(){
+        List<Evento> eventos = new ArrayList<>();
         for (Evento evt : arrayEventos) {
-            if (LocalDateTime.now().isBefore(evt.getData()))
-            System.out.println(evt.toString());
+            if (LocalDateTime.now().isBefore(evt.getData())) {
+                eventos.add(evt);
+            }
         }
+        return eventos;
     }
+
     public void listarEventosRealizados(){
         for (Evento evt : arrayEventos) {
             if (LocalDateTime.now().isAfter(evt.getData()))

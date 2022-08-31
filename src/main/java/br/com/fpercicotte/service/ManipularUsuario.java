@@ -12,9 +12,9 @@ public class ManipularUsuario {
     private int index;
     public Usuario salvarUsuario(Usuario usuario){
         index = arrayUsuarios.size();
-        usuario.setId(index+1);
+        usuario.setId(index + 1);
         this.arrayUsuarios.add(usuario);
-        return arrayUsuarios.get(index--);
+        return arrayUsuarios.get(index);
     }
 
     public boolean deletarUsuario(int id){
@@ -32,7 +32,7 @@ public class ManipularUsuario {
     }
 
     public int getIndex(){
-        return this.index;
+        return arrayUsuarios.size() -1;
     }
 
     public void listarUsurarios(){
