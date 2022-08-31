@@ -131,7 +131,10 @@ public class MenuEvento {
         System.out.println("---------------------------------");
         System.out.println("Listar Eventos");
 
-        manipular.listarEventosAbertos();
+        for( Evento evt : manipular.listarEventosAbertos()){
+            System.out.println(evt);
+        }
+
         System.out.println("---------------------------------");
         return null;
     }
